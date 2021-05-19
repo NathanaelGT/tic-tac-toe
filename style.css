@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  height: 100vh;
+  min-width: 320px;
+  min-height: 320px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+  user-select: none;
+}
+
+main {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: repeat(3, auto);
+
+  height: 300px;
+  width: 300px;
+}
+
+main div:not(.x):not(.o):hover::before,
+main div:not(.x):not(.o):hover::after {
+  background-color: #aaa !important;
+}
+
+main div {
+  height: 100px;
+  width: 100px;
+  margin: 3px;
+  cursor: pointer;
+
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.x,
+.o {
+  cursor: not-allowed !important;
+}
+
+.x::before,
+.x::after,
+main.x-turn div:not(.x):not(.o):hover::before,
+main.x-turn div:not(.x):not(.o):hover::after {
+  content: "";
+  position: absolute;
+
+  margin-left: 45px;
+  width: 10px;
+  height: 100px;
+  background-color: #000;
+  border-radius: 10px;
+}
+
+.x::before,
+main.x-turn div:not(.x):not(.o):hover::before {
+  transform: rotate(45deg);
+}
+
+.x::after,
+main.x-turn div:not(.x):not(.o):hover::after {
+  transform: rotate(-45deg);
+}
+
+.o::before,
+.o::after,
+main.o-turn div:not(.x):not(.o):hover::before,
+main.o-turn div:not(.x):not(.o):hover::after {
+  content: "";
+  position: absolute;
+
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.o::before,
+main.o-turn div:not(.x):not(.o):hover::before {
+  width: 90px;
+  height: 90px;
+  margin: 5px;
+}
+
+.o::after,
+main.o-turn div:not(.x):not(.o):hover::after {
+  width: 60px;
+  height: 60px;
+  margin: 20px;
+  background-color: #fff !important;
+}
+
+#message-box {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
+  min-height: 320px;
+
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+#message-box.show {
+  display: flex;
+}
+
+#restart {
+  margin-top: 10px;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #f0f0f0;
+  border-radius: 4px;
+  background-color: transparent;
+  font-size: 16px;
+  padding: 5px 10px;
+}
